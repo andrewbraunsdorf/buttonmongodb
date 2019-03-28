@@ -45,3 +45,12 @@ app.post('/clicked', (req, res) => {
     res.sendStatus(201);
   });
 });
+
+// get the click data from the database
+app.get('/clicks', (req, res) => {
+
+  db.collection('clicks').find().toArray((err, result) => {
+    if (err) return console.log(err);
+    res.send(result);
+  });
+});
